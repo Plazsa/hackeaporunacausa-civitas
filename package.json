@@ -10,10 +10,12 @@
     "type": "git",
     "url": "git@gitlab.plazsa.com:open-source/agora.git"
   },
-  "author": "",
+  "author": "Victor A. Martinez <victor@plazsa.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "flags": "^0.1.3",
     "koa": "^2.2.0",
-    "koa-router": "^7.1.1"
+    "koa-router": "^7.1.1",
+    "rethinkdb": "^2.3.3"
   }
 }
