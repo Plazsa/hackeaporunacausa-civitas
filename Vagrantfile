@@ -19,10 +19,6 @@ $script = <<SCRIPT
   sudo npm i -g nodemon
 
   grep "cd /opt/node/src/gitlab.plazsa.com/open-source/agora" ~/.profile || echo "cd /opt/node/src/gitlab.plazsa.com/open-source/agora" >> ~/.profile
-
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-  nvm install 7
-  nvm use 7
 SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure

@@ -7,19 +7,14 @@ const r = require('rethinkdb')
  * 
  * @export
  * @param {any} { port = 28015, host = 'localhost', db } 
- * @returns {any} { conn = rethinkdb.Connection|undefined, err = Error|undefined }
+ * @returns {Connection} conn
  */
-export async function connect({ port = 28015, host = 'localhost', db }) {
-    try {
-        let conn = await r.connect({
-            port: port,
-            host: host,
-            db: db,
-        })
-        return { conn }
-    } catch (err) {
-        return { err }
-    }
+module.exports.connect = async function connect({ port = 28015, host = 'localhost', db = 'test' }) {
+    return await r.connect({
+        port: port,
+        host: host,
+        db: db,
+    })
 }
 
 
@@ -28,33 +23,28 @@ export async function connect({ port = 28015, host = 'localhost', db }) {
  * 
  * @export
  * @param {any} { conn, database = "", tables = string[] } 
- * @returns {any} { results = rethinkdb.CreateResult[]|undefined, err = Error|undefined }
+ * @returns {CreateResult} results
  */
-export async function makeTables({ conn, database = "test", tables = [] }) {
-    try {
-        let databases = await r.dbList().run(conn)
+module.exports.makeTables = async function makeTables({ conn, database = "test", tables = [] }) {
 
-        if (databases.indexOf(database) === -1) {
-            throw new Error(`Database ${database} was not found.`)
-        }
+    let databases = await r.dbList().run(conn)
 
-        let db = r.db(database),
-            list = await db.tableList().run(conn)
-
-        // only create tables that don't exist
-        tables = tables.map(table => {
-            if (list.indexOf(table) !== -1) {
-                return table
-            }
-        })
-
-        // create tables and map the resutls of their creation
-        let results = tables.map(table => {
-            return await db.tableCreate(table).run(conn)
-        })
-
-        return { results }
-    } catch (err) {
-        return { err }
+    if (databases.indexOf(database) === -1) {
+        throw new Error(`Database ${database} was not found.`)
     }
+
+    let db = r.db(database),
+        list = await db.tableList().run(conn)
+
+    // only create tables that don't exist
+    tables = tables.filter(table => {
+        if (list.indexOf(table) === -1) {
+            return table
+        }
+    })
+
+    // create tables and map the resutls of their creation
+    return await Promise.all(tables.map(async table => {
+        return await db.tableCreate(table).run(conn)
+    }))
 }
