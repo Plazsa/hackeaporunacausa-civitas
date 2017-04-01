@@ -48,8 +48,9 @@ export async function makeTables({ conn, database = "test", tables = [] }) {
             }
         })
 
+        // create tables and map the resutls of their creation
         let results = tables.map(table => {
-            await db.tableCreate(table).run(conn)
+            return await db.tableCreate(table).run(conn)
         })
 
         return { results }
