@@ -133,4 +133,4 @@ class Volunteers {
     }
 }
 
-module.exports.Volunteer = Volunteer
+module.exports.Volunteers = Volunteers
