@@ -1,15 +1,22 @@
 Community
+get post /community
+get, put, delete /community/:id
+get /community/:id/announcements
+get /community/:id/volunteers
+get /community/:id/members
+get post put delete /community/:id/image
+
     HasA:
         Title
-        Descriptions
+        Descriptions*
         website
         Cause
         Logo or Picture
-        Creator (Staff)
-        Staff
-        Members
+        Creator (Staff)*
+        Staff*
+        Members?
         HQ Location
-        Announcements (Blog)
+        Announcements (Blog)?
         Main Contact
 
     Can:
@@ -17,17 +24,23 @@ Community
         Hold Events
 
 Volunteers
+get? post /volunteer
+get put delete /volunteer/:id
+get? /volunteer/:id/userRatings
     HasA:
         Full Names
         Email
+        occupation
         Summary
-        Phone Numbers
-        Profile pictures
+        Phone Numbers*
+        Profile picture
+        Badges
+        Certification*
         SkillSet (tags)
-        (Availability Time Frames)
+        (Availability Time Frames)*
         Location
-        Range
-        UserRatings
+        Range*
+        UserRatings (Points)
 
 
     Can:
@@ -35,10 +48,16 @@ Volunteers
 
 
 UserRatings
+get /userrating/:volunteerID
+
     HasA:
+        volunteerID
+        Aggregate of certificate
         Aggregate of comment ratings
 
 Events
+get post /event
+get put delete /event/:id
     HasA:
         Title
         Description
@@ -60,7 +79,7 @@ Events
 
 
 
-Questionnaire
+?Questionnaire
     HasA:
         EventID
         GoogleDrive Url
@@ -71,7 +90,7 @@ Questionnaire
     Logic:
         Questionnaire for volunteers will be sent after Vetting the volunteer work.
 
-Managers
+?Managers
 
     Can:
         Accept an event volunteer vet
@@ -82,7 +101,7 @@ Managers
         Vetting comments
 
 
-Comments
+?Comments
     Has:
         JoinID
         Author
@@ -91,7 +110,7 @@ Comments
         Text
         Visible
         
-Donors
+?Donors
     Has:
         Name if not anon
         Amount donated
@@ -99,6 +118,29 @@ Donors
         isPublic
     Can:
         Donate (duh...)
-(Sponsors
+?(Sponsors
     Has:
         Comunities)
+
+        Community
+        Volunteer
+        Follow a commmunity as a volunteer
+        Create an event
+        View volunteer Profile get/volunteer/:id
+        View communities get /communities
+        view profile
+        view events
+
+
+        Register
+        Login
+        view volunteers
+        view volunteer
+
+        view communities
+        view community
+        view events
+        view event
+        Create community
+        create event
+
