@@ -1,0 +1,352 @@
+﻿@model Volunteer
+<div class="row">
+	<div class="card col z-depth-2 l12 m12 s12" style="margin-top:10%">
+		<div class="card-content" style="text-align: center;">
+			<img class="profile-thumbnail-large circle z-depth-4" src='@Model.picture' style="margin-top:-11%" />
+			<h4>@Model.fullName</h4>
+			<h5><i class="material-icons">work</i>@Model.occupation</h5>
+			<h5><i class="material-icons">location_on</i>@Model.location</h5>
+			<p>@Model.summary</p>
+			<div class="row" style="text-align:center;"><h5><strong>Points: </strong>@Model.points</h5></div>
+			<div class="row">
+				@foreach(var badge in Model.badges)
+				{
+					<div>
+						<img class="merit-badge circle col l3 m4 s6" src="http://c001af38d1d46a976912-b99970780ce78ebdd694d83e551ef810.r48.cf1.rackcdn.com/orgheaders/2686/americanlabormb.jpg">
+					</div>
+				}
+				<div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--<div class="row">
+	<div class="card col z-depth-2 l12 m12 s12">
+		<div class="card-content">
+			
+		</div>
+	</div>
+</div>-->
+
+<div class="row">
+	<div class="card col z-depth-2 l12 m12 s12">
+		<div class="card-content">
+			<div class="row">
+    <div class="col s12 m12 l12">
+      <ul class="tabs">
+        <li class="tab col s4 m4 l4"><a href="#test1">Participation</a></li>
+        <li class="tab col s4 m4 l4"><a href="#test2">Abilities</a></li>
+        <li class="tab col s4 m4 l4"><a href="#test3">Memberships</a></li>
+      </ul>
+    </div>
+    <div id="test1" class="col s12 m12 l12">
+			<div class="row">
+
+	<div class="col s12 m6 l4">
+		<div class="card">
+			<div class="card-image">
+				<img src="https://orphanetwork.files.wordpress.com/2011/12/dsc04712.jpg">
+			</div>
+			<div class="card-content">
+				<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;">Help feed the children</span>
+			</div>
+		</div>
+	</div>
+	<div class="col s12 m6 l4">
+		<div class="card">
+			<div class="card-image">
+				<img src="https://cdn1.techworld.com/cmsdata/features/3611221/Barclays_Code_Playgroud_thumb800.jpg">
+			</div>
+			<div class="card-content">
+				<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;">Taller de programación para joevenes</span>
+			</div>
+		</div>
+	</div>
+
+<!--	<div class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image">
+							<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+				<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.5rem; text-align: center;">Participate</a>
+						</div>
+						<div class="card-content">
+							<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+							<small><strong>Total Hours: </strong>8 hrs</small>
+						</div>
+					</div>
+				</div>
+
+
+	<div class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image">
+							<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+				<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.5rem; text-align: center;">Participate</a>
+						</div>
+						<div class="card-content">
+							<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+							<small><strong>Total Hours: </strong>8 hrs</small>
+						</div>
+					</div>
+				</div>
+
+
+	<div class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image">
+							<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+				<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.5rem; text-align: center;">Participate</a>
+						</div>
+						<div class="card-content">
+							<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+							<small><strong>Total Hours: </strong>8 hrs</small>
+						</div>
+					</div>
+				</div>
+
+
+	<div class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image">
+							<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+				<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.5rem; text-align: center;">Participate</a>
+						</div>
+						<div class="card-content">
+							<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+							<small><strong>Total Hours: </strong>8 hrs</small>
+						</div>
+					</div>
+				</div>-->
+	
+</div>
+  </div>
+    <div id="test2" class="col s12 m12 l12" style="margin-top:15px;">
+					@foreach(var abil in @Model.abilities)
+					{
+					<div class="chip">@abil</div>
+					}
+			
+		</div>
+    <div id="test3" class="col s12 m12 l12">
+			<div class="row">
+
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://assets.change.org/photos/8/aq/za/dNAqzaiinlVDgzA-800x450-noPad.jpg?1481692585">
+		</div>
+		<div class="card-content">
+			<a href="/Communities/Profile?id=3a9b8dec-7483-4f74-aeed-e5f3fdd78c42" class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;">Sisters of our children</a>
+			<!--<small><strong>Members: </strong>293</small>-->
+		</div>
+	</div>
+</div>
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="http://lifestylepubs.wordpress.s3-us-west-2.amazonaws.com/app/uploads/prod/2016/12/Boys_And_Girls_Club-252-800x450.jpg">
+		</div>
+		<div class="card-content">
+			<a href="/Communities/Profile?id=1475c876-95e1-4a1f-bfda-744fd96eaae7" class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;">Boys and Girls Club</a>
+			<!--<small><strong>Members: </strong>293</small>-->
+		</div>
+	</div>
+</div>
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://i.kinja-img.com/gawker-media/image/upload/myaqmyjhwhsyp2x4xwr5.png">
+		</div>
+		<div class="card-content">
+			<a href="/Communities/Profile?id=9a015e98-3d94-4d65-bd75-1f2c0737263a" class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;">Foundation for better learning</a>
+			<!--<small><strong>Members: </strong>293</small>-->
+		</div>
+	</div>
+</div>
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://i.kinja-img.com/gawker-media/image/upload/s--nlUSdGCz--/c_fill,fl_progressive,g_center,h_450,q_80,w_800/1395111712991822479.jpg">
+		</div>
+		<div class="card-content">
+			<a href="/Communities/Profile?id=8b4e83d9-e326-4f4a-8e70-448221b6dc35" class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;">Blind Programmers</a>
+			<!--<small><strong>Members: </strong>293</small>-->
+		</div>
+	</div>
+</div>
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://i.kinja-img.com/gawker-media/image/upload/s--xK4gtVBb--/c_fill,fl_progressive,g_center,h_450,q_80,w_800/fikh8ihicrsjhsgyjt0t.png">
+		</div>
+		<div class="card-content">
+			<a href="/Communities/Profile?id=f07ebf74-e80b-4f25-9d69-adcd157f173e" class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;">[-]akea por una causa</a>
+			<!--<small><strong>Members: </strong>293</small>-->
+		</div>
+	</div>
+</div>
+	
+	
+<!--
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+			<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;">Join</a>
+		</div>
+		<div class="card-content">
+			<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+			<p><small><strong>Members: </strong>293</small></p>
+		</div>
+	</div>
+</div>-->
+
+</div>
+  </div>
+		</div>
+	</div>
+</div>

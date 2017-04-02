@@ -1,0 +1,306 @@
+﻿@model Community
+<div class="row">
+	<div class="card col z-depth-2 offset-l1 l10 m12 s12">
+		<div class="card-image">
+              <img src='@Model.picture'>
+		</div>
+		<div class="card-content" style="text-align: center;">
+			<h4>@Model.title</h4>
+			<h5><a href='@Model.website'>@Model.website</a></h5>
+			<h5><i class="material-icons">location_on</i>@Model.location</h5>
+			<p>@Model.cause</p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="card col z-depth-2 l12 m12 s12">
+		<div class="card-content">
+			<div class="row">
+    <div class="col s12 m12 l12">
+      <ul class="tabs">
+        <li class="tab col s4 m4 l4"><a href="#test1">Posts</a></li>
+        <li class="tab col s4 m4 l4"><a href="#test2">Events</a></li>
+        <li class="tab col s4 m4 l4"><a href="#test3">Members</a></li>
+      </ul>
+    </div>
+    <div id="test1" class="col s12 m12 l12">
+			<div class="row">
+			<div class="col s12 m6 l6">
+	<div class="card">
+		<div class="card-header" style="display: flex;">
+        	<img class="profile-pic thumbnail circle" style="margin-left:10px;" src="https://i.kinja-img.com/gawker-media/image/upload/s--LJ4kR8Aa--/c_scale,fl_progressive,q_80,w_800/197gkt72jr0e1jpg.jpg"/>
+				<a href="#" style="margin-top:15px;">Jonathan</a>
+				<i class="material-icons" style="margin-top:12px; margin-left:5px;margin-right:5px;">trending_flat</i>
+				<strong style="margin-top:15px;">[-]ackea por una causa</strong>
+		</div>
+		<div class="card-image">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center; margin-right:50px;"><i class="material-icons">thumb_up</i></a>
+			<a class="comment btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;"><i class="material-icons">textsms</i></a>
+		</div>
+		<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<p>[-]ackea por una causa fue divertido</p>
+			<div class="card-footer input-field" style="display: none;">
+          		<input id="icon_prefix" type="text">
+          		<label for="icon_prefix">Comment...</label>
+				<a class="comment-btn btn waves-effect waves-light teal">Send</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l6">
+	<div class="card">
+		<div class="card-header" style="display: flex;">
+        	<img class="profile-pic thumbnail circle" style="margin-left:10px;" src="https://www.polk.edu/wp-content/uploads/Edna-Mitchell-800x450.jpg"/>
+				<a href="#" style="margin-top:15px;">Edna Mode</a>
+				<i class="material-icons" style="margin-top:12px; margin-left:5px;margin-right:5px;">trending_flat</i>
+				<strong style="margin-top:15px;">[-]ackea por una causa</strong>
+		</div>
+		<div class="card-image">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center; margin-right:50px;"><i class="material-icons">thumb_up</i></a>
+			<a class="comment btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;"><i class="material-icons">textsms</i></a>
+		</div>
+		<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<p>Voy a Puerto Rico y peso doble. Hacker in the island!</p>
+			<div class="card-footer input-field" style="display: none;">
+          		<input id="icon_prefix" type="text">
+          		<label for="icon_prefix">Comment...</label>
+				<a class="comment-btn btn waves-effect waves-light teal">Send</a>
+			</div>
+		</div>
+	</div>
+</div>
+	
+<div class="col s12 m6 l6">
+	<div class="card">
+		<div class="card-header" style="display: flex;">
+        	<img class="profile-pic thumbnail circle" style="margin-left:10px;" src="http://media.yogajournal.com/wp-content/uploads/Maty-Ezraty.jpg"/>
+				<a href="#" style="margin-top:15px;">Elizabeth Pearl</a>
+				<i class="material-icons" style="margin-top:12px; margin-left:5px;margin-right:5px;">trending_flat</i>
+				<strong style="margin-top:15px;">[-]akea por una causa</strong>
+		</div>
+		<div class="card-image">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center; margin-right:50px;"><i class="material-icons">thumb_up</i></a>
+			<a class="comment btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;"><i class="material-icons">textsms</i></a>
+		</div>
+		<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<p>Aprendi mucho con ustedes, gracias!</p>
+			<div class="card-footer input-field" style="display: none;">
+          		<input id="icon_prefix" type="text">
+          		<label for="icon_prefix">Comment...</label>
+				<a class="comment-btn btn waves-effect waves-light teal">Send</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l6">
+	<div class="card">
+		<div class="card-header" style="display: flex;">
+        	<img class="profile-pic thumbnail circle" style="margin-left:10px;" src="https://i.kinja-img.com/gawker-media/image/upload/s--LJ4kR8Aa--/c_scale,fl_progressive,q_80,w_800/197gkt72jr0e1jpg.jpg"/>
+				<a href="#" style="margin-top:15px;">Victor Martinez </a>
+				<i class="material-icons" style="margin-top:12px; margin-left:5px;margin-right:5px;">trending_flat</i>
+				<strong style="margin-top:15px;">[-]akea por una causa</strong>
+		</div>
+		<div class="card-image">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center; margin-right:50px;"><i class="material-icons">thumb_up</i></a>
+			<a class="comment btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;"><i class="material-icons">textsms</i></a>
+		</div>
+		<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<p>I missed tihs feeling. Thank you!</p>
+			<div class="card-footer input-field" style="display: none;">
+          		<input id="icon_prefix" type="text">
+          		<label for="icon_prefix">Comment...</label>
+				<a class="comment-btn btn waves-effect waves-light teal">Send</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l6">
+	<div class="card">
+		<div class="card-header" style="display: flex;">
+        	<img class="profile-pic thumbnail circle" style="margin-left:10px;" src="https://media.licdn.com/media-proxy/ext?w=800&h=800&hash=98NOqmLxqPQYsv8FR15eV4gonYE%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6plxVKjAou-OOCqUH-50hKCpbUF23zBGe1k4r1NCKfEIWdBsbb9yhBBHV77ARsO6jKRUSyH4y8Y4rlftxxi9_kIpjsKVZQOUwu3Dkfo9I_N0lqo5u-SOj0bmBN3eEXeD-xPLjtdB08Aiol6P-2JIrZLlhe0FuNSt2uTJ8WDeczodAVlQ4A8ZWRQZpqhtwkwnhu"/>
+				<a href="#" style="margin-top:15px;">José Negro</a>
+				<i class="material-icons" style="margin-top:12px; margin-left:5px;margin-right:5px;">trending_flat</i>
+				<strong style="margin-top:15px;">[-]akea por una causa</strong>
+		</div>
+		<div class="card-image">
+			<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center; margin-right:50px;"><i class="material-icons">thumb_up</i></a>
+			<a class="comment btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.7rem; text-align: center;"><i class="material-icons">textsms</i></a>
+		</div>
+		<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<p>I have not slept!! Amazing!! ...zzzz...</p>
+			<div class="card-footer input-field" style="display: none;">
+          		<input id="icon_prefix" type="text">
+          		<label for="icon_prefix">Comment...</label>
+				<a class="comment-btn btn waves-effect waves-light teal">Send</a>
+			</div>
+		</div>
+	</div>
+</div>
+						</div>
+  </div>
+    <div id="test2" class="col s12 m12 l12">
+    	<div class="row">
+    	<div class="col s12 m6 l4">
+		<div class="card">
+			<div class="card-image">
+				<img src="https://cdn1.techworld.com/cmsdata/features/3611221/Barclays_Code_Playgroud_thumb800.jpg">
+			</div>
+			<div class="card-content">
+				<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;">Taller de programación para joevenes</span>
+			</div>
+		</div>
+	</div>
+					</div>
+			
+		</div>
+    <div id="test3" class="col s12 m12 l12">
+			<div class="row">
+
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+          		<img class="circle img-responsive" src="http://media.yogajournal.com/wp-content/uploads/Maty-Ezraty.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+				<a style="color: #ee6e73;" href="/Profile/Profile?id=9a89e801-8ca8-4011-8c9c-7b84477a4e11">Elizabeth Pearl</a>
+				<br>
+				<span>Points: 11</span>
+			</div>
+		</div>
+	</div>
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+          		<img class="circle img-responsive" src="https://www.polk.edu/wp-content/uploads/Edna-Mitchell-800x450.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+				<a style="color: #ee6e73;" href="/Profile/Profile?id=9c1840a0-5c03-42d8-906a-a014eb29c64e">Edna Mode</a>
+				<br>
+				<span>Points: 11</span>
+			</div>
+		</div>
+	</div>
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+          		<img class="circle img-responsive" src="https://i.kinja-img.com/gawker-media/image/upload/s--LJ4kR8Aa--/c_scale,fl_progressive,q_80,w_800/197gkt72jr0e1jpg.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+				<a style="color: #ee6e73;" href="/Profile/Profile?id=abff1a2c-1b1e-451f-b1ba-3cff65bf2c9a">Jonathan Diaz</a>
+				<br>
+				<span>Points: 11</span>
+			</div>
+		</div>
+	</div>
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+          		<img class="circle img-responsive" src="http://i.imgur.com/Vn2GMVX.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+				<a style="color: #ee6e73;" href="/Profile/Profile?id=1977c055-58c8-46d2-a327-004e5ccb5a5e">Plazsa, Inc</a>
+				<br>
+				<span>Points: 11</span>
+			</div>
+		</div>
+	</div>
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+          		<img class="circle img-responsive" src="https://media.licdn.com/media-proxy/ext?w=800&amp;h=800&amp;hash=98NOqmLxqPQYsv8FR15eV4gonYE%3D&amp;ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6plxVKjAou-OOCqUH-50hKCpbUF23zBGe1k4r1NCKfEIWdBsbb9yhBBHV77ARsO6jKRUSyH4y8Y4rlftxxi9_kIpjsKVZQOUwu3Dkfo9I_N0lqo5u-SOj0bmBN3eEXeD-xPLjtdB08Aiol6P-2JIrZLlhe0FuNSt2uTJ8WDeczodAVlQ4A8ZWRQZpqhtwkwnhu">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+				<a style="color: #ee6e73;" href="/Profile/Profile?id=c20530f6-f166-4f7a-bb9e-2ac196c1d7f0">José Negro</a>
+				<br>
+				<span>Points: 11</span>
+			</div>
+		</div>
+	</div>
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+          		<img class="circle img-responsive" src="http://i.imgur.com/QTztLuz.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+				<a style="color: #ee6e73;" href="/Profile/Profile?id=f49f032c-5643-47f1-862a-70380eebe098">Victor Martinez</a>
+				<br>
+				<span>Points: 1</span>
+			</div>
+		</div>
+	</div>
+
+<!--<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>-->
+	
+</div>
+  </div>
+		</div>
+	</div>
+</div>

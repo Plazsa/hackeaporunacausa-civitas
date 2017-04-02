@@ -1,0 +1,75 @@
+﻿@model Event[]
+
+<div class="row">
+
+@foreach(var events in @Model)
+{
+	<div class="col s12 m6 l4">
+		<div class="card">
+			<div class="card-image">
+				<img src='@events.image'>
+				<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.5rem; text-align: center;">Participate</a>
+			</div>
+			<div class="card-content">
+				<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;">@events.title</span>
+			</div>
+		</div>
+	</div>
+}
+
+<!--	<div class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image">
+							<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+				<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.5rem; text-align: center;">Participate</a>
+						</div>
+						<div class="card-content">
+							<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+							<small><strong>Total Hours: </strong>8 hrs</small>
+						</div>
+					</div>
+				</div>
+
+
+	<div class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image">
+							<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+				<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.5rem; text-align: center;">Participate</a>
+						</div>
+						<div class="card-content">
+							<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+							<small><strong>Total Hours: </strong>8 hrs</small>
+						</div>
+					</div>
+				</div>
+
+
+	<div class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image">
+							<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+				<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.5rem; text-align: center;">Participate</a>
+						</div>
+						<div class="card-content">
+							<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+							<small><strong>Total Hours: </strong>8 hrs</small>
+						</div>
+					</div>
+				</div>
+
+
+	<div class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image">
+							<img src="https://theluxurytravelexpert.files.wordpress.com/2014/01/scenery.jpg">
+				<a class="btn-floating halfway-fab waves-effect waves-light teal" style="font-size:.5rem; text-align: center;">Participate</a>
+						</div>
+						<div class="card-content">
+							<span class="card-title" style="padding-bottom: 5px; border-bottom: 1px solid #ee6e73;" >Card Title</span>
+							<small><strong>Total Hours: </strong>8 hrs</small>
+						</div>
+					</div>
+				</div>-->
+	
+</div>

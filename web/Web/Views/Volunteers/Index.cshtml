@@ -1,0 +1,86 @@
+@model Volunteer[]
+<div class="row">
+
+@foreach(var volunteer in Model)
+{
+	<div class="col s12 m6 l4">
+	<div class="card">
+		<div class="card-image">
+          		<img class="circle img-responsive" src='@volunteer.picture'>
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+				<a style="color: #ee6e73;" href='@Url.Action("Profile","Profile")?id=@volunteer.id'>@volunteer.fullName</a>
+				<br/>
+				<span>Points: @volunteer.points</span>
+			</div>
+		</div>
+	</div>
+}
+
+<!--<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4">
+	<div class="card">
+			<div class="card-image">
+          		<img class="circle img-responsive" src="http://i2.kym-cdn.com/photos/images/original/001/182/301/1fb.jpg">
+			</div>
+			<div class="card-content" style="text-align: center; border-top: 1px solid #eee; margin: 0 15px;">
+			<a style="color: #ee6e73;" href="#">Username</a>
+		</div>
+	</div>
+</div>-->
+	
+</div>

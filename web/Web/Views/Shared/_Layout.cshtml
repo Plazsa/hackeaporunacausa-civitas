@@ -1,0 +1,111 @@
+﻿@{
+	string name = "";
+	string picture = "";
+	string id = "";
+
+	if(Session["id"]!=null && !string.IsNullOrEmpty(Session["id"].ToString()))
+	{
+		name = Session["fullName"].ToString();
+		picture = Session["picture"].ToString();
+		id = Session["id"].ToString();
+	}
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<title>@ViewBag.Title</title>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="~/Assets/materialize/css/materialize.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="~/Styles/styles.css"/>
+		
+	@RenderSection("styles", false)
+</head>
+<body class="grey lighten-4">
+	<header>
+		<nav class="top-nav teal z-depth-3" style="position:fixed;z-index:3;">
+		<a href='@Url.Action("Index","Home")' class="brand-logo">
+			<img style="height:auto;max-width:150px;margin-top:15px;" src="~/Assets/tcivitaslogo.png" />
+				</a>
+			<div class="nav-wrapper hide-on-large-only">
+                <a href="#" data-activates="nav-mobile" class="button-collapse top-nav"><i class="material-icons">menu</i></a>
+            </div>
+			<div class="nav-wrapper hide-on-med-and-down">
+					<div class="right">
+						@if(string.IsNullOrEmpty(id))
+						{
+						<ul class="right">
+                			<li><a href='@Url.Action("Login", "Profile")'>Log In</a></li>
+                			<li><a href='@Url.Action("Register", "Profile")'>Sign Up</a></li>
+           	 			</ul>
+						}
+						else
+						{
+						<a href='@Url.Action("Profile", "Index")' data-activates='profile-dropdown' class="top-nav dropdown-button">@name<img class="profile-pic thumbnail right circle" src='@picture'/></a>
+						}
+					</div>
+			<ul id='profile-dropdown' class='dropdown-content'>
+    			<li><a href="#!">one</a></li>
+    			<li><a href="#!">two</a></li>
+    			<li class="divider"></li>
+    			<li><a href="#!">three</a></li>
+    			<li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+    			<li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+  			</ul>
+				<form style="margin-right: 20%; margin-left: 20%;">
+        			<div class="input-field">
+          				<input id="search" type="search" placeholder="Search...">
+         				<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          				<i class="material-icons">close</i>
+        			</div>
+      			</form>
+			</div>
+
+			<ul id="nav-mobile" class="side-nav">
+				<li><a href='@Url.Action("Index","Home")' class="home btn"><i class="fa fa-home"></i>Home</a></li>
+        		<li><a href='@Url.Action("Index","Volunteers")' class="volunteers btn"><i class="fa fa-users"></i>Volunteers</a></li>
+        		<li><a href='@Url.Action("Index","Communities")' class="communities btn"><i class="fa fa-handshake-o"></i>Communities</a></li>
+				<li><a href='@Url.Action("Index","Profile")' class="profile btn"><i class="fa fa-user"></i>Profile</a></li>
+				<li><a href='@Url.Action("Index","Events")' class="events btn"><i class="fa fa-calendar"></i>Events</a></li>
+			</ul>
+        </nav>
+	</header>
+	<div class="row">
+		<div class="col l2 hide-on-med-and-down">
+			<ul class="side-nav" style="transform: translate(0,65px)!important;">
+				<li><a href='@Url.Action("Index","Home")' class="home btn"><i class="fa fa-home"></i>Home</a></li>
+        		<li><a href='@Url.Action("Index","Volunteers")' class="volunteers btn"><i class="fa fa-users"></i>Volunteers</a></li>
+        		<li><a href='@Url.Action("Index","Communities")' class="communities btn"><i class="fa fa-handshake-o"></i>Communities</a></li>
+				<li><a href='@Url.Action("Index","Profile")' class="profile btn"><i class="fa fa-user"></i>Profile</a></li>
+				<li><a href='@Url.Action("Index","Events")' class="events btn"><i class="fa fa-calendar"></i>Events</a></li>
+			</ul>
+		</div>
+		<div class="col l10 m12 s12" style="margin-top: 70px;">
+			<div class="container">
+				@RenderBody()
+				<div class="fixed-action-btn">
+					<a id="donate" class="waves-effect waves-light btn btn-floating btn-large" ><i class="fa fa-money"></i></a>
+				</div>
+				<div class="tap-target teal" style="color: #fff;" data-activates="donate">
+    				<div class="tap-target-content">
+      					<h5>Hey there!</h5>
+						<p>Remember you can donate at any time by clicking on this button!</p>
+    				</div>
+  				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="~/Scripts/jquery-3.2.0.min.js"></script>	
+	<script type="text/javascript" src="~/Scripts/navigation.js"></script>	
+	<script type="text/javascript" src="~/Assets/materialize/js/materialize.min.js"></script>
+	<script>
+		$(function() {
+    		$(".button-collapse").sideNav();
+		});
+	</script>
+	@RenderSection("scripts", false)
+</body>
+</html>
