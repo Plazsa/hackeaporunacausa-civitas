@@ -13,8 +13,7 @@ async function main() {
     
     flags.parse()
 
-    let tables = ['volunteers', 'events', 'communities', 'comments', 'announcements'],
-        options = { db: flags.get('rethinkdb-database'), port: flags.get('rethinkdb-port'), host: flags.get('rethinkdb-host') },
+    let options = { db: flags.get('rethinkdb-database'), port: flags.get('rethinkdb-port'), host: flags.get('rethinkdb-host') },
         app = new Koa()
 
     app.use(logger())
