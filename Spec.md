@@ -2,10 +2,15 @@ Community
     HasA:
         Title
         Descriptions
+        website
+        Cause
         Logo or Picture
         Creator (Staff)
-        Staff Members
+        Staff
+        Members
+        HQ Location
         Announcements (Blog)
+        Main Contact
 
     Can:
         Make an Announcement
@@ -50,8 +55,9 @@ Events
     
     Can:
         Make an Announcement
-        Add volunteers (volunteer) 
+        Pending volunteers (volunteer) 
         Accept Volunteers (Staff)
+
 
 
 Questionnaire
@@ -62,11 +68,15 @@ Questionnaire
     Can:
         Look up volunteers that actually volunteered
 
-Staff
+    Logic:
+        Questionnaire for volunteers will be sent after Vetting the volunteer work.
+
+Managers
 
     Can:
         Accept an event volunteer vet
-        Create Announements
+        Certify a volunteer
+        Create Announcements
         Create Events
         Create announcements on events
         Vetting comments
