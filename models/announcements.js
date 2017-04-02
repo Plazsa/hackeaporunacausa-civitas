@@ -2,12 +2,15 @@ const r = require('rethinkdb'),
     { Map } = require('immutable')
 
 class Announcement {
-    static types = Map({
-        'EVENT': 'event',
-        'COMMUNITY': 'community',
-    })
+    static get types() {
+        return Map({
+            'EVENT': 'event',
+            'COMMUNITY': 'community',
+        })
+    }
 
-    constructor({ id, date = new Date(), text = '', type = Announcement.types.get('EVENT'), joinID }) {
+    constructor(options) {
+        let { id, date, text, type, joinID } = options
         this._id = id
         this._date = date
         this._text = text
@@ -48,8 +51,9 @@ class Announcement {
 module.exports.Announcement = Announcement
 
 class Announcements {
-    constructor({ table = r.table('announcements') }) {
-        this._table = table
+    constructor(options) {
+        let { table } = options||{}
+        this._table = table||r.table('announcements')
     }
 
     static async createIndexes({ table = r.table('announcements') }, conn) {

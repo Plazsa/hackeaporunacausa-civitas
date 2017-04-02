@@ -2,19 +2,22 @@ const r = require('rethinkdb'),
     { Map } = require('immutable')
 
 module.exports.Comment = class Comment {
-    static types = Map({
-        'EVENT': 'event',
-        'COMMUNITY': 'community',
-    })
+    static get types() {
+        return Map({
+            'EVENT': 'event',
+            'COMMUNITY': 'community',
+        })
+    }
 
-    constructor({ id, joinID, author, vote = 0, type = Comment.types.COMMUNITY, text = '', visible = false }) {
+    constructor(options) {
+        let { id, joinID, author, vote, type, text, visible } = options
         this._id = id
         this._joinId = joinID
         this._vote = vote
         this._type = type
         this._text = text
         this._author = author
-        this._visible = visible
+        this._visible = visible|false
     }
 
     get author() {
@@ -71,7 +74,8 @@ module.exports.Comment = class Comment {
 
 module.exports.Comments = class Comments {
 
-    constructor({ table = r.table('comments') }) {
+    constructor(options) {
+        let { table } = options
         this._table = table
     }
 
@@ -111,7 +115,7 @@ module.exports.Comments = class Comments {
             throw new Error(`Type ${comment.type} is not valid type`)
         }
 
-            let result = await this._table.insert(comment.toJSON(), { conflict: 'replace' }).run(conn)
+        let result = await this._table.insert(comment.toJSON(), { conflict: 'replace' }).run(conn)
 
         if (result.generated_keys.length > 0) {
             return result.generated_keys[0]

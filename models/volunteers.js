@@ -1,16 +1,17 @@
 const r = require('rethinkdb')
 
 class Volunteer {
-    constructor({ id, hash, fullName, email, occupation, summary, picture, badges = [], abilities = [], location = { latitude: 0, longitude: 0 } }) {
+    constructor(options) {
+        let { id, hash, fullName, email, occupation, summary, picture, badges, abilities, location } = options
         this._id = id
         this._fullName = fullName
         this._summary = summary
         this._picture = picture
-        this._badges = badges
-        this._location = location
+        this._badges = badges||[]
+        this._location = location||{ latitude: 0, longitude: 0 }
         this._occupation = occupation
         this._email = email
-        this._abilities = abilities
+        this._abilities = abilities||[]
         this._hash = hash
     }
 
@@ -109,13 +110,27 @@ module.exports.Volunteer = Volunteer
 
 
 class Volunteers {
-    constructor({ table = r.table('comments'), conn }) {
-        this._table = table
+    constructor(options) {
+        let { table } = options||{}
+        this._table = table||r.table('comments')
+    }
+
+    static async createIndexes({ table = r.table('events') }, conn) {
+        return await table.indexCreate('email').run(conn)
     }
 
     async getByID({ id }, conn) {
         let volunteer = await this._table
             .get(id).run(conn)
+            .then(cursor => cursor.toArray())
+            .then(volunteers => volunteers.length > 0 ? volunteers[0] : null)
+
+        return new Volunteer(volunteer)
+    }
+
+    async getByEmail({ email = '' }, conn) {
+        let volunteer = await this._table
+            .getAll(email, { index: 'email' }).run(conn)
             .then(cursor => cursor.toArray())
             .then(volunteers => volunteers.length > 0 ? volunteers[0] : null)
 
