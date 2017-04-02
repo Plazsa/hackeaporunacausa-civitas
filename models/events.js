@@ -60,7 +60,7 @@ const r = require('rethinkdb'),
             community: this.community,
             start: this.start,
             end: this.end,
-        
+            image: this.image,
         }
 
         if (!this.ID) {
