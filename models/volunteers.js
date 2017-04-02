@@ -113,9 +113,22 @@ class Volunteers {
         this._table = table
     }
 
+    static async createIndexes({ table = r.table('events') }, conn) {
+        return await table.indexCreate('email').run(conn)
+    }
+
     async getByID({ id }, conn) {
         let volunteer = await this._table
             .get(id).run(conn)
+            .then(cursor => cursor.toArray())
+            .then(volunteers => volunteers.length > 0 ? volunteers[0] : null)
+
+        return new Volunteer(volunteer)
+    }
+
+    async getByEmail({ email = '' }, conn) {
+        let volunteer = await this._table
+            .getAll(email, { index: 'email' }).run(conn)
             .then(cursor => cursor.toArray())
             .then(volunteers => volunteers.length > 0 ? volunteers[0] : null)
 
