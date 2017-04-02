@@ -93,6 +93,16 @@ module.exports.Events = class Events {
             .getAll({ type: Announcement.types.get('EVENT'), joinID: id, }, conn)
     }
 
+    async save({ event = new Event() }, conn) {
+        let result = await this._table.insert(event.toJSON(), { conflict: 'replace' }).run(conn)
+
+        if (result.generated_keys.length > 0) {
+            return result.generated_keys[0]
+        }
+
+        return event.ID
+    }
+
     async delete({ id }) {
         await this._table.get(id).delete().run(conn)
         let a = await this.getAnnouncements({ id })
