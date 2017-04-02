@@ -59,7 +59,7 @@ module.exports.Comment = class Comment {
 
     toJSON() {
         return {
-            [this.id ? 'id' : null]: this.ID,
+            [this.ID ? 'id' : null]: this.ID,
             joinId: this.joinID,
             vote: this.vote,
             type: this.type,

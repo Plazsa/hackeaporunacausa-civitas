@@ -1,7 +1,7 @@
 const r = require('rethinkdb'),
     { Map } = require('immutable')
 
-module.exports.Announcement = class Announcement {
+class Announcement {
     static types = Map({
         'EVENT': 'event',
         'COMMUNITY': 'community',
@@ -45,7 +45,9 @@ module.exports.Announcement = class Announcement {
     }
 }
 
-module.exports.Announcements = class Announcements {
+module.exports.Announcement = Announcement
+
+class Announcements {
     constructor({ table = r.table('announcements'), conn }) {
         this._table = table
     }
@@ -66,8 +68,8 @@ module.exports.Announcements = class Announcements {
         return announcements[0]
     }
 
-    async getAll({ type, joinID }, conn) {
-        let query = this._table
+    async getAll({ type = Announcement.types.get('COMMUNITY'), joinID = '' }, conn) {
+        let results = await this._table
             .getAll([type, joinID], { index: 'type_id' })
             .run(conn)
             .then(cursor => cursor.toArray())
@@ -94,3 +96,5 @@ module.exports.Announcements = class Announcements {
         return await this._table.get(id).delete().run(conn)
     }
 }
+
+module.exports.Announcements = Announcements
