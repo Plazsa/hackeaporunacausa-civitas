@@ -83,7 +83,7 @@ class Communities {
         return community.ID
     }
 
-    async list({ }, conn) {
+    async list(conn) {
         let communities = await this._table.run(conn).then(cursor => cursor.toArray())
         return communities.map(community => new Community(community))
     }
