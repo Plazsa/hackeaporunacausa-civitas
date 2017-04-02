@@ -132,3 +132,5 @@ class Volunteers {
         return volunteer.ID
     }
 }
+
+module.exports.Volunteer = Volunteer
