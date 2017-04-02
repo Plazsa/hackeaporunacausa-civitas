@@ -6,8 +6,8 @@ var event = new Route()
 
 event.use(bodyParser())
 
-event.get('/events/:id',event.getEvent)
-event.get('/events',event.getEvents)
-event.post('events',event.addEvent)
+event.get('/events/:id',events.getEvent)
+event.get('/events',events.getEvents)
+event.post('events',events.addEvent)
 
 module.exports = event
