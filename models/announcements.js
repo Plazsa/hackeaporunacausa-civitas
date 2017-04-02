@@ -48,7 +48,7 @@ class Announcement {
 module.exports.Announcement = Announcement
 
 class Announcements {
-    constructor({ table = r.table('announcements'), conn }) {
+    constructor({ table = r.table('announcements') }) {
         this._table = table
     }
 

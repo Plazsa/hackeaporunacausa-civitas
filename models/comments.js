@@ -71,7 +71,7 @@ module.exports.Comment = class Comment {
 
 module.exports.Comments = class Comments {
 
-    constructor({ table = r.table('comments'), conn }) {
+    constructor({ table = r.table('comments') }) {
         this._table = table
     }
 
