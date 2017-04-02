@@ -1,1 +1,2 @@
-module.exports.login = require('./login')
+module.exports.volunteers = require('./volunteers')
+module.exports.communities = require('./communities')
