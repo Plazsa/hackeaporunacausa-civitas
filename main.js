@@ -3,7 +3,8 @@ const Koa = require('koa'),
     flags = require('flags'),
     r = require('rethinkdb'),
     routers = require('./routers'),
-    db = require('./db')
+    db = require('./db'),
+    session = require('koa-session')
 
 async function main() {
     flags.defineInteger('port', 5000, 'Server port')
@@ -17,7 +18,10 @@ async function main() {
         app = new Koa()
 
     app.use(logger())
-
+    app.keys = ['some secret hurr'];
+    app.use(session(app))
+    app.use(routers.loginroute.routes())
+    app.use(routers.loginroute.allowedMethods())
     app.listen(flags.get('port'), () => {
         console.info('listening on port', flags.get('port'))
     })
