@@ -1,5 +1,5 @@
 var {volunteers} = require('../models')
-var md = require('md5')
+var md5 = require('md5')
 var db = require('../db')
 
 var vs = new volunteers.Volunteers();
