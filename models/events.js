@@ -69,7 +69,7 @@ module.exports.Event = class Event {
 
 
 module.exports.Events = class Events {
-    constructor({ table = r.table('events'), announcements = new Announcements(), conn }) {
+    constructor({ table = r.table('events'), announcements = new Announcements() }) {
         this._table = table
         this._announcements = announcements
     }
