@@ -1,7 +1,7 @@
 const r = require('rethinkdb'),
     { Map } = require('immutable')
 
-class Comment {
+module.exports.Comment = class Comment {
     static types = Map({
         'EVENT': 'event',
         'COMMUNITY': 'community',
@@ -59,7 +59,7 @@ class Comment {
 
     toJSON() {
         return {
-            [this.id ? 'id' : null]: this.id,
+            [this.id ? 'id' : null]: this.ID,
             joinId: this.joinID,
             vote: this.vote,
             type: this.type,
