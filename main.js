@@ -20,11 +20,13 @@ async function main() {
     app.use(logger())
     app.keys = ['some secret hurr'];
     app.use(session(app))
-    
+
     app.use(routers.volunteers.routes())
     app.use(routers.volunteers.allowedMethods())
     app.use(routers.communities.routes())
     app.use(routers.communities.allowedMethods())
+    app.use(routers.events.routes())
+    app.use(routers.events.allowedMethods())
 
     app.listen(flags.get('port'), () => {
         console.info('listening on port', flags.get('port'))

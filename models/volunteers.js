@@ -3,16 +3,16 @@ const r = require('rethinkdb')
 class Volunteer {
     constructor(options) {
         let { id, hash, fullName, email, occupation, summary, picture, badges, abilities, location } = options
-        this._id = id
-        this._fullName = fullName
-        this._summary = summary
-        this._picture = picture
-        this._badges = badges||[]
-        this._location = location||{ latitude: 0, longitude: 0 }
-        this._occupation = occupation
-        this._email = email
-        this._abilities = abilities||[]
-        this._hash = hash
+        this._id = id || ''
+        this._fullName = fullName || ''
+        this._summary = summary || ''
+        this._picture = picture || ''
+        this._badges = badges || []
+        this._location = location || { latitude: 0, longitude: 0 }
+        this._occupation = occupation || ''
+        this._email = email || ''
+        this._abilities = abilities || []
+        this._hash = hash || ''
     }
 
     get ID() {
@@ -90,8 +90,7 @@ class Volunteer {
     }
 
     toJSON() {
-        return {
-            [this.ID ? 'id' : null]: this.ID,
+        let j = {
             abilities: this.abilities,
             badges: this.badges,
             summary: this.summary,
@@ -103,6 +102,12 @@ class Volunteer {
             points: this.points,
             hash: this.hash,
         }
+
+        if (this.ID !== "") {
+            j.id = this.ID
+        }
+
+        return j
     }
 }
 
@@ -111,35 +116,33 @@ module.exports.Volunteer = Volunteer
 
 class Volunteers {
     constructor(options) {
-        let { table } = options||{}
-        this._table = table||r.table('comments')
+        let { table } = options || {}
+        this._table = table || r.table('volunteers')
     }
 
-    static async createIndexes({ table = r.table('events') }, conn) {
+    static async createIndexes({ table = r.table('volunteers') }, conn) {
         return await table.indexCreate('email').run(conn)
     }
 
     async getByID({ id }, conn) {
-        let volunteer = await this._table
-            .get(id).run(conn)
-            .then(cursor => cursor.toArray())
-            .then(volunteers => volunteers.length > 0 ? volunteers[0] : null)
-
-        return new Volunteer(volunteer)
+        return await this._table
+            .get(id)
+            .run(conn)
+            .then(v => new Volunteer(v))
     }
 
     async getByEmail({ email = '' }, conn) {
-        let volunteer = await this._table
-            .getAll(email, { index: 'email' }).run(conn)
+        return await this._table
+            .getAll(email, { index: 'email' })
+            .run(conn)
             .then(cursor => cursor.toArray())
-            .then(volunteers => volunteers.length > 0 ? volunteers[0] : null)
-
-        return new Volunteer(volunteer)
+            .then(vs => vs.length > 0 ? vs[0] : {})
+            .then(v => new Volunteer(v))
     }
 
     async list(conn) {
         let volunteers = await this._table
-            .get(id).run(conn)
+            .run(conn)
             .then(cursor => cursor.toArray())
 
         return volunteers.map(volunteer => new Volunteer(volunteer))

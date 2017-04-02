@@ -1,10 +1,10 @@
-var {events} = require('../models')
+var { events } = require('../models')
 var db = require('../db')
 
 var ev = new events.Events()
 
-module.exports.getEvents = async function(ctx){
-    var conn = await db.connect()
+module.exports.getEvents = async function (ctx) {
+    var conn = await db.connect({})
     var list = await ev.list(conn)
     await conn.close()
 
@@ -12,28 +12,26 @@ module.exports.getEvents = async function(ctx){
 
 }
 
-module.exports.getEvent = async function(ctx){
-    var conn = await db.connect()
-    var res = await ev.getByID({id:ctx.params.id},conn)
+module.exports.getEvent = async function (ctx) {
+    var conn = await db.connect({})
+    var res = await ev.getByID({ id: ctx.params.id }, conn)
     await conn.close()
 
     ctx.body = res
 }
 
-module.exports.addEvent = async function(ctx){
-    var conn = await db.connect();
-    try{
-       
+module.exports.addEvent = async function (ctx) {
+    var conn = await db.connect({})
+    
+    try {
         var v = new events.Event(ctx.request.body)
-        ctx.body = await cm.save(v)
-        
+        ctx.body = { id: await ev.save({ event: v }, conn) }
     }
-    catch(e)
-    {
+    catch (e) {
         ctx.body = e.message
     }
-    finally{
-         conn.close()
+    finally {
+        conn.close()
     }
 
 }

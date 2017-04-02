@@ -1,18 +1,18 @@
 const r = require('rethinkdb'),
     { Announcements, Announcement } = require('./announcements')
 
-module.exports.Event = class Event {
+ class Event {
     constructor(options) {
         let { id, community, title, description, image, location, startDate, endDate } = options
-        
-        this._id = id
-        this._community = community
-        this._title = title
-        this._description = description
-        this._image = image
-        this._location = location||{ latitude: 0, longitude: 0, }
-        this._start = startDate||new Date()
-        this._end = endDate||new Date()
+
+        this._id = id || ''
+        this._community = community || ''
+        this._title = title || ''
+        this._description = description || ''
+        this._image = image || ''
+        this._location = location || { latitude: 0, longitude: 0, }
+        this._start = startDate || new Date()
+        this._end = endDate || new Date()
     }
 
     get ID() {
@@ -56,8 +56,8 @@ module.exports.Event = class Event {
     }
 
     toJSON() {
-        return {
-            [this.ID ? 'id' : null]: this.ID,
+        let j = {
+            id: this.ID,
             location: this.location,
             title: this.title,
             description: this.description,
@@ -66,15 +66,23 @@ module.exports.Event = class Event {
             end: this.end,
             duration: this.duration,
         }
+
+        if (!this.ID) {
+            delete j.id
+        }
+
+        return j
     }
 }
+
+module.exports.Event = Event
 
 
 module.exports.Events = class Events {
     constructor(options) {
-        let { table, announcements } = options||{}
-        this._table = table||r.table('events')
-        this._announcements = announcements||new Announcements()
+        let { table, announcements } = options || {}
+        this._table = table || r.table('events')
+        this._announcements = announcements || new Announcements()
     }
 
     static async createIndexes({ table = r.table('events') }, conn) {
@@ -84,8 +92,6 @@ module.exports.Events = class Events {
     async getByID({ id }, conn) {
         let event = await this._table
             .get(id).run(conn)
-            .then(cursor => cursor.toArray())
-            .then(events => events.length > 0 ? events[0] : null)
 
         return new Event(event)
     }
@@ -97,7 +103,7 @@ module.exports.Events = class Events {
     }
 
     async list(conn) {
-        let events = await this._table.get().run(conn).then(cursor => cursor.toArray())
+        let events = await this._table.run(conn).then(cursor => cursor.toArray())
 
         return events.map(event => new Event(event))
     }

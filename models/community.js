@@ -5,13 +5,13 @@ const r = require('rethinkdb'),
 class Community {
     constructor(options) {
         let { id, title, website, cause, location, picture, contact } = options
-        this._id = id
-        this._title = title
-        this._website = website
-        this._cause = cause
-        this._location = location||{ latitude: 0, longitude: 0 }
-        this._picture = picture
-        this._contact = contact
+        this._id = id||''
+        this._title = title||''
+        this._website = website||''
+        this._cause = cause||''
+        this._location = location || { latitude: 0, longitude: 0 }
+        this._picture = picture||''
+        this._contact = contact||''
     }
 
     get ID() {
@@ -43,8 +43,8 @@ class Community {
     }
 
     toJSON() {
-        return {
-            [this.ID ? 'id' : null]: this.ID,
+        let j =  {
+            id: this.ID,
             title: this.title,
             website: this.website,
             cause: this.cause,
@@ -52,6 +52,12 @@ class Community {
             picture: this.picture,
             contact: this.contact
         }
+
+        if (!this.ID) {
+            delete j.id
+        }
+
+        return j
     }
 }
 
@@ -59,23 +65,20 @@ module.exports.Community = Community
 
 class Communities {
     constructor(options) {
-        let { table, announcements, events } = options||{}
-        this._table = table||r.table('communities')
-        this._announcements = announcements||new Announcements()
-        this._events = events||new Events()
+        let { table, announcements, events } = options || {}
+        this._table = table || r.table('communities')
+        this._announcements = announcements || new Announcements()
+        this._events = events || new Events()
     }
 
     async getByID({ id }, conn) {
         let community = await this._table
             .get(id).run(conn)
-            .then(cursor => cursor.toArray())
-            .then(communities => communities.length > 0 ? communities[0] : null)
 
         return new Community(community)
     }
 
     async save({ community = new Community() }, conn) {
-
         let result = await this._table.insert(community.toJSON(), { conflict: 'replace' }).run(conn)
 
         if (result.generated_keys.length > 0) {
