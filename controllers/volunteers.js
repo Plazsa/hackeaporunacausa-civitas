@@ -5,7 +5,7 @@ var db = require('../db')
 var vs = new volunteers.Volunteers();
 
 module.exports.getVolunteers = async function(ctx){
-    var conn = await db.connect()
+    var conn = await db.connect({})
     var list = await vs.list(conn)
     await conn.close()
 
@@ -14,7 +14,7 @@ module.exports.getVolunteers = async function(ctx){
 }
 
 module.exports.getVolunteer = async function(ctx){
-    var conn = await db.connect()
+    var conn = await db.connect({})
     var res = await vs.getByID({id:ctx.params.id},conn)
     await conn.close()
 
@@ -22,7 +22,7 @@ module.exports.getVolunteer = async function(ctx){
 }
 
 module.exports.registerVolunteer = async function(ctx){
-    var conn = await db.connect();
+    var conn = await db.connect({});
     try{
         var hash = md5(ctx.request.body.password)
         ctx.request.body.hash = hash
@@ -41,7 +41,7 @@ module.exports.registerVolunteer = async function(ctx){
 }
 
 module.exports.login = async function(ctx){
-    var conn = await db.connect();
+    var conn = await db.connect({});
     try{
         var hash = md5(ctx.request.body.password)
         var volunteer = vs.getByEmail({email:ctx.request.body.email})
