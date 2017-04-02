@@ -47,10 +47,6 @@ const r = require('rethinkdb'),
         return this._end
     }
 
-    get duration() {
-        return this.end.getTime() - this.start.getTime()
-    }
-
     get location() {
         return this._location
     }
@@ -64,7 +60,7 @@ const r = require('rethinkdb'),
             community: this.community,
             start: this.start,
             end: this.end,
-            duration: this.duration,
+        
         }
 
         if (!this.ID) {
