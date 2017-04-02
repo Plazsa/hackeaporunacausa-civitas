@@ -122,7 +122,15 @@ class Volunteers {
         return new Volunteer(volunteer)
     }
 
-     async save({ volunteer = new Volunteer() }, conn) {
+    async list(conn) {
+        let volunteers = await this._table
+            .get(id).run(conn)
+            .then(cursor => cursor.toArray())
+
+        return volunteers.map(volunteer => new Volunteer(volunteer))
+    }
+
+    async save({ volunteer = new Volunteer() }, conn) {
         let result = await this._table.insert(volunteer.toJSON(), { conflict: 'replace' }).run(conn)
 
         if (result.generated_keys.length > 0) {

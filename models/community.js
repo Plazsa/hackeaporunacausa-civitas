@@ -97,7 +97,7 @@ class Communities {
     async getEvents({ id }) {
         return await this
             ._events
-            .getAll({ type: Announcement.types.get('COMMUNITY'), joinID: id, }, conn)
+            .getAll({ type: Event.types.get('COMMUNITY'), joinID: id, }, conn)
     }
 
 
