@@ -3,12 +3,13 @@ const r = require('rethinkdb'),
     { Announcement, Announcements } = require('./announcements')
 
 class Community {
-    constructor({ id, title, website, cause, location = { latitude: 0, longitude: 0 }, picture, contact }) {
+    constructor(options) {
+        let { id, title, website, cause, location, picture, contact } = options
         this._id = id
         this._title = title
         this._website = website
         this._cause = cause
-        this._location = location
+        this._location = location||{ latitude: 0, longitude: 0 }
         this._picture = picture
         this._contact = contact
     }
@@ -57,10 +58,11 @@ class Community {
 module.exports.Community = Community
 
 class Communities {
-    constructor({ table = r.table('communities'), announcements = new Announcements(), events = new Events() }) {
-        this._table = table
-        this._announcements = announcements
-        this._events = events
+    constructor(options) {
+        let { table, announcements, events } = options||{}
+        this._table = table||r.table('communities')
+        this._announcements = announcements||new Announcements()
+        this._events = events||new Events()
     }
 
     async getByID({ id }, conn) {

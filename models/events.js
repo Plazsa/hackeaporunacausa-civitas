@@ -2,15 +2,17 @@ const r = require('rethinkdb'),
     { Announcements, Announcement } = require('./announcements')
 
 module.exports.Event = class Event {
-    constructor({ id, community, title, description, image, location = { latitude: 0, longitude: 0, }, startDate = new Date(), endDate = new Date() }) {
+    constructor(options) {
+        let { id, community, title, description, image, location, startDate, endDate } = options
+        
         this._id = id
         this._community = community
         this._title = title
         this._description = description
         this._image = image
-        this._location = location
-        this._start = startDate
-        this._end = endDate
+        this._location = location||{ latitude: 0, longitude: 0, }
+        this._start = startDate||new Date()
+        this._end = endDate||new Date()
     }
 
     get ID() {
@@ -69,9 +71,10 @@ module.exports.Event = class Event {
 
 
 module.exports.Events = class Events {
-    constructor({ table = r.table('events'), announcements = new Announcements() }) {
-        this._table = table
-        this._announcements = announcements
+    constructor(options) {
+        let { table, announcements } = options||{}
+        this._table = table||r.table('events')
+        this._announcements = announcements||new Announcements()
     }
 
     static async createIndexes({ table = r.table('events') }, conn) {
@@ -91,6 +94,12 @@ module.exports.Events = class Events {
         return await this
             ._announcements
             .getAll({ type: Announcement.types.get('EVENT'), joinID: id, }, conn)
+    }
+
+    async list(conn) {
+        let events = await this._table.get().run(conn).then(cursor => cursor.toArray())
+
+        return events.map(event => new Event(event))
     }
 
     async save({ event = new Event() }, conn) {
